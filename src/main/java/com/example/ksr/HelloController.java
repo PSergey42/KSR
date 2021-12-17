@@ -1,9 +1,18 @@
 package com.example.ksr;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.Parent;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
-public class HelloController extends Parent {
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class HelloController{
 
 
     @FXML
