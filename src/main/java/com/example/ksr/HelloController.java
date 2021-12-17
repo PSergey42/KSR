@@ -17,7 +17,6 @@ public class HelloController extends Parent {
         File file = new File("D:/Programs/KSR/src/main/resources/com/example/ksr/index.html");
         URL url= file.toURI().toURL();
         webViewMap.getEngine().load(url.toString());
-        //GoogleMap googleMap = new GoogleMap(webViewMap);
 
 
     }
