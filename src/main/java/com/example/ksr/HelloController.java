@@ -3,12 +3,30 @@ package com.example.ksr;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
-    @FXML
-    private Label welcomeText;
+public class HelloController extends Parent {
+
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    private WebView webViewMap;
+
+    private WebEngine webEngine;
+    private boolean ready;
+
+    @FXML
+    void initialize() throws MalformedURLException {
+        File file = new File("D:/Programs/KSR/src/main/resources/com/example/ksr/index.html");
+        URL url= file.toURI().toURL();
+        webViewMap.getEngine().load(url.toString());
+        //GoogleMap googleMap = new GoogleMap(webViewMap);
+
+
     }
+
+
+
+
+
+
+
+
 }
