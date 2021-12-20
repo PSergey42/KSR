@@ -1,20 +1,25 @@
 package com.example.ksr.pollutions;
 
-import javafx.scene.paint.Color;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
 
-public class AQI implements Serializable {
+public class BAQI implements Serializable {
+    @JsonProperty("display_name")
     private String name;
+    @JsonProperty("aqi")
     private int aqi;
+    @JsonProperty("aqi_display")
     private String aqiDisplay;
+    @JsonProperty("color")
     private String color;
+    @JsonProperty("category")
     private String category;
 
-    public AQI(){}
+    public BAQI(){}
 
-    public AQI(String name, int aqi, String aqiDisplay, String color, String category){
+    public BAQI(String name, int aqi, String aqiDisplay, String color, String category){
         this.name = name;
         this.aqi = aqi;
         this.aqiDisplay = aqiDisplay;

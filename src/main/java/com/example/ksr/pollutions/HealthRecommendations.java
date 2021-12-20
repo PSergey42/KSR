@@ -1,14 +1,23 @@
 package com.example.ksr.pollutions;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 
 public class HealthRecommendations implements Serializable {
+    @JsonProperty("general_population")
     private String generalPopulation;
+    @JsonProperty("elderly")
     private String elderly;
+    @JsonProperty("lung_diseases")
     private String lungDiseases;
+    @JsonProperty("heart_diseases")
     private String heartDiseases;
+    @JsonProperty("active")
     private String active;
+    @JsonProperty("pregnant_women")
     private String pregnantWomen;
+    @JsonProperty("children")
     private String children;
 
     public HealthRecommendations(){}

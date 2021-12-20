@@ -1,17 +1,23 @@
 package com.example.ksr.pollutions;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
-import java.util.Arrays;
+import java.util.Map;
 
 public class Data implements Serializable {
+    @JsonProperty("datetime")
     private String dateTime;
+    @JsonProperty("data_available")
     private boolean dataAvailable;
-    private Substance[] pollutants;
+    @JsonProperty("pollutants")
+    private Map<String, Substance> pollutants;
+    @JsonProperty("health_recommendations")
     private HealthRecommendations healthRecommendations;
 
     public Data(){}
 
-    public Data(String dateTime, boolean dataAvailable, Substance[] pollutants, HealthRecommendations healthRecommendations){
+    public Data(String dateTime, boolean dataAvailable, Map<String, Substance> pollutants, HealthRecommendations healthRecommendations){
         this.dateTime = dateTime;
         this.dataAvailable = dataAvailable;
         this.pollutants = pollutants;
@@ -34,11 +40,11 @@ public class Data implements Serializable {
         this.dataAvailable = dataAvailable;
     }
 
-    public Substance[] getPollutants() {
+    public Map<String, Substance> getPollutants() {
         return pollutants;
     }
 
-    public void setPollutants(Substance[] pollutants) {
+    public void setPollutants(Map<String, Substance> pollutants) {
         this.pollutants = pollutants;
     }
 
@@ -53,6 +59,6 @@ public class Data implements Serializable {
     @Override
     public String toString(){
         return String.format("{\"dateTime\" : \"%s\", \"dataAvailable\" : \"%s\", \"pollutants\" : \"%s\", \"healthRecommendations\" : \"%s\"}",
-                dateTime, dataAvailable, Arrays.toString(pollutants), healthRecommendations);
+                dateTime, dataAvailable, pollutants.toString(), healthRecommendations);
     }
 }

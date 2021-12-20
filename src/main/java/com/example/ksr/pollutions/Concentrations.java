@@ -1,9 +1,13 @@
 package com.example.ksr.pollutions;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 
 public class Concentrations implements Serializable {
+    @JsonProperty("value")
     private double value;
+    @JsonProperty("units")
     private String units;
 
     public Concentrations(){}

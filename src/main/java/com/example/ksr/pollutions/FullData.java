@@ -1,10 +1,15 @@
 package com.example.ksr.pollutions;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 
 public class FullData implements Serializable {
+    @JsonProperty("metadata")
     private String metadata;
+    @JsonProperty("data")
     private Data data;
+    @JsonProperty("error")
     private String err;
 
     public FullData(){}
