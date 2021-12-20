@@ -123,7 +123,8 @@ public class GoogleMap extends Parent{
         System.out.println(String.format("https://api.breezometer.com/air-quality/v2/current-conditions?lat=%s&lon=%s&key=312adece2c4d4312993604b76b464369&features=pollutants_aqi_information,pollutants_concentrations,health_recommendations",lat,lng));
         BufferedReader in = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
         String f = in.readLine();
-        //System.out.println(Test.getFullData(f));
+        ControllerForm2.setFulData(Test.getFullData(f));
+        HelloController.setFulData(Test.getFullData(f));
         helloController.paneIsVisible();
     }
 

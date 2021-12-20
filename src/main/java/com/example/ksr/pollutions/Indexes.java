@@ -22,3 +22,4 @@ public class Indexes {
         return String.format("{\"baqi\" : \"%s\"}",baqi.toString());
     }
 }
+

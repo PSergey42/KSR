@@ -18,8 +18,8 @@
             var location = event.latLng;
             var lat = location.lat();
             var lng = location.lng();
-
             app.getInfoJS(lat, lng);
+            setMarkerPosition(lat, lng)
          //   app.handle(lat, lng);
         }
 
