@@ -1,14 +1,11 @@
 package com.example.ksr.pollutions;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-public class AqiInformation {
-    @JsonProperty("baqi")
+public class Indexes {
     private BAQI baqi;
 
-    public AqiInformation(){}
+    public Indexes(){}
 
-    public AqiInformation(BAQI baqi) {
+    public Indexes(BAQI baqi){
         this.baqi = baqi;
     }
 
@@ -22,6 +19,6 @@ public class AqiInformation {
 
     @Override
     public String toString(){
-        return String.format("{\"baqi\" : \" %s\"}",baqi.toString());
+        return String.format("{\"baqi\" : \"%s\"}",baqi.toString());
     }
 }

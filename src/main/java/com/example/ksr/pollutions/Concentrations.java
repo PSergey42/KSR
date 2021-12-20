@@ -6,9 +6,9 @@ import java.io.Serializable;
 
 public class Concentrations implements Serializable {
     @JsonProperty("value")
-    private double value;
+    public double value;
     @JsonProperty("units")
-    private String units;
+    public String units;
 
     public Concentrations(){}
 
