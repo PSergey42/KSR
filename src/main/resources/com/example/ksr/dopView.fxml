@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="109.0" prefWidth="386.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ksr.ControllerForm2">
+   <children>
+      <Label layoutX="43.0" layoutY="41.0" text="Загрузка:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="progressBar" layoutX="133.0" layoutY="41.0" prefHeight="27.0" prefWidth="200.0" progress="0.0" />
+   </children>
+</AnchorPane>

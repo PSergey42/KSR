@@ -11,6 +11,16 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import netscape.javascript.JSObject;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
+
 public class GoogleMap extends Parent{
 
     private JSObject doc;
@@ -18,15 +28,12 @@ public class GoogleMap extends Parent{
     private WebView webViewMap;
     private WebEngine webEngine;
     private boolean ready;
+    private static HelloController helloController = new HelloController();
 
     public GoogleMap(WebView webView) {
         this.webViewMap = webView;
         initMap();
         initCommunication();
-        //getChildren().add(webView);
-        //setMarkerPosition(53.199782615069864, 50.15764227806227);
-        //setMapCenter(53.199782615069864, 50.15764227806227);
-       // switchTerrain();
     }
 
     private void initMap() {
@@ -47,7 +54,7 @@ public class GoogleMap extends Parent{
     }
 
     private void initCommunication() {
-        webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
+        /*webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
             @Override
             public void changed(final ObservableValue<? extends Worker.State> observableValue,
                                 final Worker.State oldState,
@@ -57,7 +64,9 @@ public class GoogleMap extends Parent{
                     doc.setMember("app", GoogleMap.this);
                 }
             }
-        });
+        });*/
+        doc = (JSObject) webEngine.executeScript("window");
+        doc.setMember("app", GoogleMap.this);
     }
 
     private void invokeJS(final String str) {
@@ -84,6 +93,8 @@ public class GoogleMap extends Parent{
     public void handle(double lat, double lng) {
         if (onMapLatLngChanged != null) {
             MapEvent event = new MapEvent(this, lat, lng);
+            System.out.println("event");
+            System.out.println(event);
             onMapLatLngChanged.handle(event);
         }
     }
@@ -98,6 +109,22 @@ public class GoogleMap extends Parent{
         String sLat = Double.toString(lat);
         String sLng = Double.toString(lng);
         invokeJS("setMapCenter(" + sLat + ", " + sLng + ")");
+    }
+
+    public void getXY(double lat, double lng) {
+        String sLat = Double.toString(lat);
+        String sLng = Double.toString(lng);
+        System.out.println("setMapCenter(" + sLat + ", " + sLng + ")");
+    }
+
+    public void getInfoJS(double lat, double lng) throws IOException {
+        URL url = new URL(String.format("https://api.breezometer.com/air-quality/v2/current-conditions?lat=%s&lon=%s&key=312adece2c4d4312993604b76b464369&features=pollutants_aqi_information,pollutants_concentrations,health_recommendations",lat,lng));
+        URLConnection urlConnection = url.openConnection();
+        System.out.println(String.format("https://api.breezometer.com/air-quality/v2/current-conditions?lat=%s&lon=%s&key=312adece2c4d4312993604b76b464369&features=pollutants_aqi_information,pollutants_concentrations,health_recommendations",lat,lng));
+        BufferedReader in = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+        String f = in.readLine();
+        //System.out.println(Test.getFullData(f));
+        helloController.paneIsVisible();
     }
 
     public void switchSatellite() {

@@ -18,8 +18,9 @@
             var location = event.latLng;
             var lat = location.lat();
             var lng = location.lng();
-            setMarkerPosition(lat, lng);
-            app.handle(lat, lng);
+
+            app.getInfoJS(lat, lng);
+         //   app.handle(lat, lng);
         }
 
         function setMarkerPosition(lat, lng) {
@@ -88,7 +89,6 @@
                     latLngBounds: Samara_BOUNDS,
                     strictBounds: false,
                 },
-                //center: defLatLng,
                 zoom: 12,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 disableDefaultUI: true,
@@ -103,16 +103,15 @@
                 map: map,
                 icon: "img/pin.png"
             });
-
             app.handle(0, 0);
         }
 
         function setDarkMarkerIcon() {
-            marker.setIcon("img/Pin.png");
+            marker.setIcon("https://maps.google.com/mapfiles/kml/shapes/");
         }
 
         function setLightMarkerIcon() {
-            marker.setIcon("img/Pin_s.png");
+            marker.setIcon("https://maps.google.com/mapfiles/kml/shapes/");
         }
     </script>
 </head>
