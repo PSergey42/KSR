@@ -1,5 +1,6 @@
 package com.example.ksr;
 
+import com.example.ksr.pollutions.FullData;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -19,6 +20,7 @@ import java.net.MalformedURLException;
 public class ControllerForm2 extends Window {
 
     private static Button buttonObr;
+    private static FullData data;
 
     private static ToggleButton buttonDiagram;
     private static ToggleButton buttonList;

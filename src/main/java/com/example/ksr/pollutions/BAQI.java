@@ -7,15 +7,15 @@ import java.io.Serializable;
 
 public class BAQI implements Serializable {
     @JsonProperty("display_name")
-    private String name;
+    protected String name;
     @JsonProperty("aqi")
-    private int aqi;
+    protected int aqi;
     @JsonProperty("aqi_display")
-    private String aqiDisplay;
+    protected String aqiDisplay;
     @JsonProperty("color")
-    private String color;
+    protected String color;
     @JsonProperty("category")
-    private String category;
+    protected String category;
 
     public BAQI(){}
 

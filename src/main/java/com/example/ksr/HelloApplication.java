@@ -1,5 +1,6 @@
 package com.example.ksr;
 
+import com.example.ksr.pollutions.Test;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

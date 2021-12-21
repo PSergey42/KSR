@@ -27,6 +27,9 @@ public class Data implements Serializable {
         this.dataAvailable = dataAvailable;
         this.indexes = indexes;
         this.pollutants = pollutants;
+       /* for (Substance s : pollutants.values()) {
+
+        }*/
         this.healthRecommendations = healthRecommendations;
     }
 

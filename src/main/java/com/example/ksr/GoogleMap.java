@@ -1,5 +1,6 @@
 package com.example.ksr;
 
+import com.example.ksr.pollutions.Test;
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -34,6 +35,10 @@ public class GoogleMap extends Parent{
         this.webViewMap = webView;
         initMap();
         initCommunication();
+    }
+
+    public static void setHelloController(HelloController helloController) {
+        GoogleMap.helloController = helloController;
     }
 
     private void initMap() {
@@ -118,9 +123,9 @@ public class GoogleMap extends Parent{
     }
 
     public void getInfoJS(double lat, double lng) throws IOException {
-        URL url = new URL(String.format("https://api.breezometer.com/air-quality/v2/current-conditions?lat=%s&lon=%s&key=312adece2c4d4312993604b76b464369&features=pollutants_aqi_information,pollutants_concentrations,health_recommendations",lat,lng));
+        URL url = new URL(String.format("https://api.breezometer.com/air-quality/v2/current-conditions?lat=%s&lon=%s&key=312adece2c4d4312993604b76b464369&features=pollutants_aqi_information,pollutants_concentrations,health_recommendations,breezometer_aqi&lang=ru",lat,lng));
         URLConnection urlConnection = url.openConnection();
-        System.out.println(String.format("https://api.breezometer.com/air-quality/v2/current-conditions?lat=%s&lon=%s&key=312adece2c4d4312993604b76b464369&features=pollutants_aqi_information,pollutants_concentrations,health_recommendations",lat,lng));
+        System.out.println(String.format("https://api.breezometer.com/air-quality/v2/current-conditions?lat=%s&lon=%s&key=312adece2c4d4312993604b76b464369&features=pollutants_aqi_information,pollutants_concentrations,health_recommendations,breezometer_aqi&lang=ru",lat,lng));
         BufferedReader in = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
         String f = in.readLine();
         ControllerForm2.setFulData(Test.getFullData(f));

@@ -1,19 +1,22 @@
 package com.example.ksr.pollutions;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Indexes {
-    private BAQI baqi;
+    @JsonProperty("baqi")
+    private BAQI2 baqi;
 
     public Indexes(){}
 
-    public Indexes(BAQI baqi){
+    public Indexes(BAQI2 baqi){
         this.baqi = baqi;
     }
 
-    public BAQI getBaqi() {
+    public BAQI2 getBaqi() {
         return baqi;
     }
 
-    public void setBaqi(BAQI baqi) {
+    public void setBaqi(BAQI2 baqi) {
         this.baqi = baqi;
     }
 

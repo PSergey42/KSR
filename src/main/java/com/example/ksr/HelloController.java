@@ -1,6 +1,6 @@
 package com.example.ksr;
 
-import com.example.ksr.pollutions.FullData;
+import com.example.ksr.pollutions.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
@@ -19,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class HelloController{
@@ -58,11 +61,16 @@ public class HelloController{
 
     @FXML
     private ScrollPane scrollPane;
+    @FXML
+    private BarChart<String, Double> chartPollutants;
 
     private static FullData data;
 
     @FXML
     void initialize() throws MalformedURLException {
+        buttonDiagram.setVisible(false);
+        buttonList.setVisible(false);
+        chartPollutants.setVisible(false);
         statusAir.setVisible(false);
         statusValue.setVisible(false);
         lable1.setVisible(false);
@@ -84,6 +92,28 @@ public class HelloController{
         newWindow.setScene(secondScene);
         newWindow.setResizable(false);
         newWindow.initModality(Modality.APPLICATION_MODAL);
+        chartPollutants.getData().clear();
+        list1.getItems().clear();
+        XYChart.Series<String, Double> series = new XYChart.Series<>();
+        series.setName("Загрязнители");
+        for (Map.Entry<String, Substance> pollutant: data.getData().getPollutants().entrySet()) {
+            String s = String.format("%.2f %s",
+                    pollutant.getValue().getConcentration().getValue(), pollutant.getValue().getConcentration().getType());
+            while (!s.matches(".{13}")){
+                s = " " + s;
+            }
+            String str = pollutant.getValue().getDisplayName();
+            while (!str.matches(".{5}")){
+                str += " ";
+            }
+
+            list1.getItems().add(String.format("%s                            %s", str, s));
+            series.getData().add(new XYChart.Data<String, Double>(
+                    pollutant.getKey(),
+                    FullData.convert(pollutant.getValue())
+                    ));
+        }
+        chartPollutants.getData().add(series);
         newWindow.showAndWait();
     }
 

@@ -11,6 +11,10 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4UGKQSWQA_Wi6Da7zA8BJ8Be4xVsmvT4&sensor=false">
     </script>
     <script type="text/javascript">
+        /*https://api.breezometer.com/air-quality/v2/current-conditions?
+        lat=53.199782615069864&lon=50.15764227806227&key=312adece2c4d4312993604b76b464369&features=
+        breezometer_aqi,local_aqi,health_recommendations,sources_and_effects,pollutants_concentrations,pollutants_aqi_information*/
+
         var map;
         var marker;
 
@@ -78,10 +82,10 @@
             var defLatLng = new google.maps.LatLng(59.95632093391832, 30.309906005859375);
 
             var Samara_BOUNDS = {
-                north: 53.33,
-                south: 53.12,
-                west: 50.078,
-                east: 50.288,
+                north: 53.424290,
+                south: 53.077152,
+                west: 50.046105,
+                east: 50.359146,
             };
             var Samara = {lat: 53.199782615069864, lng: 50.15764227806227};
             var mapOptions = {
@@ -102,7 +106,7 @@
             marker = new google.maps.Marker({
                 position: defLatLng,
                 map: map,
-                icon: "img/pin.png"
+                icon: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
             });
             app.handle(0, 0);
         }
