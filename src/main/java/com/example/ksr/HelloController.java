@@ -24,6 +24,12 @@ import java.util.ResourceBundle;
 public class HelloController{
 
     @FXML
+    private ToggleButton buttonDiagram;
+
+    @FXML
+    private ToggleButton buttonList;
+
+    @FXML
     private Button buttonObr;
 
     @FXML
@@ -48,7 +54,7 @@ public class HelloController{
     private Label lable1;
 
     @FXML
-    private ListView<?> list1;
+    private ListView<String> list1;
 
     @FXML
     private ScrollPane scrollPane;
@@ -65,7 +71,7 @@ public class HelloController{
         panel.setVisible(false);
         GoogleMap googleMap = new GoogleMap(webViewMap);
         GoogleMap.setHelloController(this);
-        ControllerForm2.setStatus(statusAir,statusValue,lable1,list1,scrollPane);
+        ControllerForm2.setStatus(statusAir,statusValue,lable1,list1,scrollPane, chartPollutants,buttonDiagram,buttonList);
     }
 
     @FXML
@@ -83,8 +89,11 @@ public class HelloController{
 
     public void paneIsVisible(){
         panel.setVisible(true);
+        buttonDiagram.setVisible(false);
+        buttonList.setVisible(false);
         lable1.setVisible(false);
         scrollPane.setVisible(false);
+        chartPollutants.setVisible(false);
         list1.setVisible(false);
         statusAir.setVisible(false);
         statusValue.setVisible(false);
@@ -132,7 +141,30 @@ public class HelloController{
 
 
 
+    @FXML
+    public void clickInfo() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("info.fxml"));
+        Scene secondScene = new Scene(fxmlLoader.load());
+        Stage newWindow = new Stage();
+        newWindow.setTitle("Информация");
+        newWindow.setScene(secondScene);
+        newWindow.setResizable(false);
+        newWindow.initModality(Modality.APPLICATION_MODAL);
+        newWindow.showAndWait();
+    }
 
+    @FXML
+    public void clickList() throws IOException {
+        chartPollutants.setVisible(false);
+        list1.setVisible(true);
+    }
+
+    @FXML
+    public void clickDiagram() throws IOException {
+        chartPollutants.setVisible(true);
+        list1.setVisible(false);
+
+    }
 
 
 }

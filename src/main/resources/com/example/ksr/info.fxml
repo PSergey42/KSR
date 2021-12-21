@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="339.0" prefWidth="903.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ksr.ControllerInfo">
+   <children>
+      <ToggleButton layoutX="358.0" layoutY="46.0" mnemonicParsing="false" onAction="#click1" prefHeight="25.0" prefWidth="46.0" text="Озон" />
+      <ToggleButton layoutX="404.0" layoutY="46.0" mnemonicParsing="false" onAction="#click2" text="Диоксид серы" />
+      <ToggleButton layoutX="656.0" layoutY="46.0" mnemonicParsing="false" onAction="#click4" text="Монооксид углерода" />
+      <ToggleButton layoutX="789.0" layoutY="46.0" mnemonicParsing="false" onAction="#click5" text="Диоксид азота" />
+      <ToggleButton layoutX="498.0" layoutY="46.0" mnemonicParsing="false" onAction="#click3" text="Твердые частицы 2.5 и 10" />
+      <Label fx:id="lable" alignment="TOP_LEFT" layoutX="358.0" layoutY="101.0" prefHeight="113.0" prefWidth="533.0" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lable1" alignment="TOP_LEFT" layoutX="358.0" layoutY="233.0" prefHeight="96.0" prefWidth="533.0" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="358.0" layoutY="81.0" text="Источники">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="358.0" layoutY="213.0" text="Эффекты">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_CENTER" layoutX="49.0" layoutY="49.0" prefHeight="58.0" prefWidth="223.0" text="Основные опасные загрязнители воздуха" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" layoutX="45.0" layoutY="128.0" prefHeight="154.0" prefWidth="245.0" text="Общее количество загрязнителей, о которых мы сообщаем в конкретной точке Самары, зависит от доступного для наших моделей уровня информации." wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
